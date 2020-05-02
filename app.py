@@ -42,4 +42,5 @@ def predict():
         result = predictValue(data)
         return jsonify({'message':result.tolist()})
 
-app.run()
+if __name__ == "__main__":
+    app.run()
