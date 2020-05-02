@@ -1,10 +1,12 @@
 from flask import Flask , jsonify ,request
+from flask_cors import CORS
 import tensorflow as tf
 from tensorflow.keras.models import model_from_json
 from sklearn.preprocessing import LabelEncoder
 
 import numpy as np
 app = Flask(__name__)
+CORS(app)
 
 label_encoder = LabelEncoder()
 label_encoder.classes_ = np.load('model/classes.npy')
