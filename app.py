@@ -1,5 +1,6 @@
 from flask import Flask , jsonify ,request
-from keras.models import model_from_json
+import tensorflow as tf
+from tensorflow.keras.models import model_from_json
 from sklearn.preprocessing import LabelEncoder
 
 import numpy as np
@@ -14,8 +15,10 @@ json_file.close()
 loaded_model = model_from_json(loaded_model_json)
 loaded_model.load_weights("model/dlModel.h5")
 print("Loaded model from disk")
-loaded_model._make_predict_function()
+# loaded_model._make_predict_function()
 
+global graph
+graph = tf.get_default_graph()
 
 from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
@@ -25,15 +28,15 @@ def predictValue(data):
     data = data.reshape(-1, 1)
     data = scaler.fit_transform(data)
     data = data.reshape(1, -1)
-    # with graph.as_default():
-    pred = loaded_model.predict(data, batch_size=1, verbose=1)
+    with graph.as_default():
+      pred = loaded_model.predict(data, batch_size=1, verbose=1)
     pred = label_encoder.inverse_transform([np.argmax(pred)])
     return pred
 
 
 @app.route('/')
 def home():
-    return jsonify({"message":"please use /predict to post a request"})
+    return jsonify({message:"please use /predict to post a request"})
 
 @app.route('/predict',methods = ['POST'])
 def predict():
