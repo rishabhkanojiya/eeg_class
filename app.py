@@ -42,4 +42,4 @@ def predict():
         result = predictValue(data)
         return jsonify({'message':result.tolist()})
 
-app.run(port = 4000)
+app.run()
