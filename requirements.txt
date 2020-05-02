@@ -1,5 +1,6 @@
 Flask
 gunicorn
+tensorflow==1.12.0
 keras
 numpy
 sklearn

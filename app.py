@@ -1,5 +1,4 @@
 from flask import Flask , jsonify ,request
-# import tensorflow as tf
 from keras.models import model_from_json
 from sklearn.preprocessing import LabelEncoder
 
@@ -17,8 +16,6 @@ loaded_model.load_weights("model/dlModel.h5")
 print("Loaded model from disk")
 loaded_model._make_predict_function()
 
-# global graph
-# graph = tf.get_default_graph()
 
 from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
