@@ -1,5 +1,4 @@
 Flask
 numpy
-tensorflow
 sklearn
 uwsgi
