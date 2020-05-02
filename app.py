@@ -33,6 +33,11 @@ def predictValue(data):
     pred = label_encoder.inverse_transform([np.argmax(pred)])
     return pred
 
+
+@app.route('/')
+def home():
+    return jsonify({"message":"please use /predict to post a request"})
+
 @app.route('/predict',methods = ['POST'])
 def predict():
     
