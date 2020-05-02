@@ -1,0 +1,6 @@
+Flask
+keras
+numpy
+tensorflow
+sklearn
+uwsgi
