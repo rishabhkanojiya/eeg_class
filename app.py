@@ -36,7 +36,7 @@ def predictValue(data):
 
 @app.route('/')
 def home():
-    return jsonify({message:"please use /predict to post a request"})
+    return jsonify({"message":"please use /predict to post a request"})
 
 @app.route('/predict',methods = ['POST'])
 def predict():
