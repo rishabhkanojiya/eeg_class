@@ -1,5 +1,6 @@
 Flask
 gunicorn
+keras
 numpy
 sklearn
 uwsgi
